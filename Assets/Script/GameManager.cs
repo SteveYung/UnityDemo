@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 	public void OnPay (string sku){
 		Debug.Log("购买商品");
 
-		GetComponent<ExternalManager> ().BuyProduct ("com.steve.unity.coins");
+		GetComponent<ExternalManager> ().BuyProduct ("com.steve.test.sss");
 
 	}
 

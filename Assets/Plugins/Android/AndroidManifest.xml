@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" android:versionCode="2" package="" android:installLocation="preferExternal">
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
   <application android:icon="@drawable/app_icon" android:label="@string/app_name" >
-    <activity android:name="com.lemonjamstudio.puzzleblocks.MainActivity"
+    <activity android:name="com.steve.unityDemo.MainActivity"
               android:label="@string/app_name"
               android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
       <intent-filter>

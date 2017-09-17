@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine.SocialPlatforms;
 public class ExternalManager : MonoBehaviour {
 
-	bool debug = true;
+	bool debug = false;
+
+	public Dictionary<string, string> productsDict;
 
 	[DllImport("__Internal")]
 	private static extern void hapticFeedback ();
@@ -145,6 +148,7 @@ public class ExternalManager : MonoBehaviour {
 			#endif
 
 			#if UNITY_ANDROID
+			Debug.Log("steve BuyProduct");
 			AndroidJavaClass ajc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 			AndroidJavaObject ajo = ajc.GetStatic<AndroidJavaObject>("currentActivity");
 			ajo.Call("BuyProduct", arg);
@@ -169,6 +173,29 @@ public class ExternalManager : MonoBehaviour {
 //			GameObject.Find ("ShopListener").GetComponent<ShopListener> ().Products ("");
 		}
 	}
+
+	public void PayCallBack()
+	{
+		Debug.Log ("steve 购买完成回调！");
+	}
+
+	public void Products(string str)
+	{
+		print ("steve Products:" + str);
+		productsDict = new Dictionary<string, string>();
+		if (str != "") {
+			str = str.Substring (0, str.Length - 1);
+			string[] data = str.Split (',');
+
+			for (int i = 0; i < data.Length; i += 2) {
+				productsDict.Add (data [0 + i], data [1 + i]);
+				//				print (data[0 + i] + "/" + data[1 + i]);
+			}
+		}
+
+	}
+
+
 
 	public void RestoreTransaction()
 	{
